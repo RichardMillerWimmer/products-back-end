@@ -2,8 +2,9 @@ module.exports = {
 
     create: (req, res) => {
         const db = req.app.get('db');
+        const { name, description, price, image_url } = req.body;
 
-        db.create_product()
+        db.create_product([name, description, price, image_url])
             .then(() => {
                 res.sendStatus(200)
             })
@@ -15,8 +16,9 @@ module.exports = {
 
     getOne: (req, res) => {
         const db = req.app.get('db')
+        const { id } = req.params;
 
-        db.read_product()
+        db.read_product(id)
             .then(product => {
                 res.status(200).send(product)
             })
@@ -41,8 +43,9 @@ module.exports = {
 
     update: (req, res) => {
         const db = req.app.get('db')
+        const { params, query } = body;
 
-        db.update_product()
+        db.update_product(params.id, query.description)
             .then(() => {
                 res.sendStatus(200)
             })
@@ -54,8 +57,9 @@ module.exports = {
 
     delete: (req, res) => {
         const db = req.app.get('db')
+        const { id } = req.params;
 
-        db.delete_product()
+        db.delete_product(id)
             .then(() => {
                 res.sendStatus(200)
             })
