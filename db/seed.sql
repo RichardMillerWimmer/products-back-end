@@ -5,3 +5,5 @@ description VARCHAR(80) NOT NULL,
 price INT NOT NULL,
 image_url TEXT NOT NULL
 );
+
+

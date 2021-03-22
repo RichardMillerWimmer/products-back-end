@@ -7,6 +7,7 @@ const app = express();
 
 const { SERVER_PORT, CONNECTION_STRING } = process.env;
 
+
 massive({
     connectionString: CONNECTION_STRING,
     ssl: {
@@ -23,8 +24,8 @@ app.use(express.json());
 
 app.get('/api/products', controller.getAll);
 app.get('/api/products/:id', controller.getOne);
-app.put('/api/products/:id', controller.create);
-app.post('/api/products', controller.update);
+app.put('/api/products/:id', controller.update);
+app.post('/api/products', controller.create);
 app.delete('/api/products/:id', controller.delete);
 
 
